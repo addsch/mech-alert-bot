@@ -4,7 +4,7 @@ const Command = require("../Structures/Command.js");
 
 module.exports = new Command({
     name: "echo",
-    description: "Repeats message back to user.",
+    description: "Repeats the message back to user.",
 
     async run(message, args, client) {
 
@@ -15,7 +15,7 @@ module.exports = new Command({
             str = args;
             str.join(" ");
         } else {
-            str = "*You hear a small gust of wind.*";
+            str = "*You notice a small gust of wind.*";
         }
 
         const msg = await message.reply(`${str}`);

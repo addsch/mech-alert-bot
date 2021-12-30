@@ -1,8 +1,7 @@
 const Event = require("../Structures/Event.js")
 
 module.exports = new Event("messageCreate", (config, message) => {
-    message.content = message.content.toLowerCase();
-    noEmbed(message);
+    message.suppressEmbeds(true);
 
     if (message.author.bot) return;
 
@@ -17,7 +16,3 @@ module.exports = new Event("messageCreate", (config, message) => {
 
     command.run(message, args, config);
 });
-
-function noEmbed(message) {
-    message.suppressEmbeds(true);
-}
