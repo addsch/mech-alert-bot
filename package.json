@@ -1,0 +1,13 @@
+{
+  "name": "mech-alert-bot",
+  "version": "1.0.0",
+  "description": "Send a DM through Discord whenever a group buy goes live.",
+  "main": "src/index.js",
+  "author": "addison",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "discord.js": "^13.5.0-dev.1640692992.4cc6331",
+    "fetch": "^1.1.0"
+  }
+}
