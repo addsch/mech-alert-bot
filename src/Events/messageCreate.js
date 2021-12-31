@@ -1,8 +1,6 @@
 const Event = require("../Structures/Event.js")
 
 module.exports = new Event("messageCreate", (config, message) => {
-    message.suppressEmbeds(true);
-
     if (message.author.bot) return;
 
     if (!message.content.startsWith(config.prefix)) return;

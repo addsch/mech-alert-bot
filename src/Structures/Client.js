@@ -6,7 +6,7 @@ const intents = new Discord.Intents("32767");
 
 class Client extends Discord.Client {
     constructor() {
-        super({ intents });
+        super({ intents, allowedMentions: { repliedUser: false } }); //don't ping user
 
         /**
          * @type {Discord.Collection<string, Command>}

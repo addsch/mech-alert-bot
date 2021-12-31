@@ -2,6 +2,7 @@
 
 const Command = require("../Structures/Command.js");
 const { default: axios } = require("axios");
+const listEmbed = require("../Functions/listEmbed.js");
 
 module.exports = new Command({
     name: "liveCaps",
@@ -14,26 +15,24 @@ module.exports = new Command({
         //...com/${type}?status=${status}
         axios.get("http://mechgroupbuyswrapper.herokuapp.com/keycaps?status=live")
             .then(res => {
-                var ven = "";
-                var len = Object.keys(res.data).length; //
+                let len = Object.keys(res.data).length;
+                let names = [];
+                let ven = []; //vendor
+                let price = [];
+
                 if (len > 0) {
                     for (let i = 0; i < len; i++) {
-                        //replace commas with line breaks
-                        ven = res.data[i].vendors;
-                        if (ven.includes(",")) {
-                            ven = ven.substring(0, ven.indexOf(","));
-                        }
-
-                        //string interpolated data to display name of switches + vendor links
-                        str += `**${res.data[i].name}**:\n${ven}\n\n`;
+                        names.push(res.data[i].name);
+                        ven.push(res.data[i].vendors);
+                        price.push(res.data[i].pricing);
                     }
-                    str = "__***Note: Due to character limits, only the main vendor is listed.***__\n\n" + str
+                    embed = listEmbed("Keycaps", names, ven, price);
+                    message.reply({ embeds: [embed] });
                 } else {
-                    str = ":exclamation: **No keycaps found in the database.** :exclamation:" +
-                        "\n\nCheck the main webpage here: https://www.mechgroupbuys.com/keycaps";
+                    str = ":exclamation: **No keyboards found in the database.** :exclamation:" +
+                        "\n\nCheck main webpage here: https://www.mechgroupbuys.com/keycaps";
+                    message.reply(str);
                 }
-                /** message.author.send(str); **/
-                message.reply(str);
             })
             .catch(err => {
                 message.reply(":exclamation:**There was an error connecting to the API.**:exclamation:\n\n" +

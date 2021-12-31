@@ -2,35 +2,44 @@
 
 const Command = require("../Structures/Command.js");
 const { default: axios } = require("axios");
+const listEmbed = require("../Functions/listEmbed.js");
 
 module.exports = new Command({
     name: "liveKeebs",
     description: "Lists all current live keyboards.",
 
     async run(message, args, client) {
-        var str = "";
+        let str = "";
+        var embed;
 
         //API link for live keyboards
         //...com/${type}?status=${status}
         axios.get("http://mechgroupbuyswrapper.herokuapp.com/keyboards?status=live")
             .then(res => {
-                var ven = "";
-                var len = Object.keys(res.data).length;
+                let len = Object.keys(res.data).length;
+                let names = [];
+                let ven = []; //vendor
+                let price = [];
+
                 if (len > 0) {
                     for (let i = 0; i < len; i++) {
-                        //replace commas with line breaks
-                        ven = res.data[i].vendors;
-                        ven = ven.replaceAll(", ", "\n");
+                        names.push(res.data[i].name);
+                        ven.push(res.data[i].vendors);
+                        price.push(res.data[i].pricing);
 
-                        //string interpolated data to display name of keyboard + vendor links
-                        str += `**${res.data[i].name}**:\n${ven}\n\n`;
+                        //ven[i] = res.data[i].vendors;
+                        //replace commas with line breaks
+                        if (ven[i].includes(",")) {
+                            ven[i] = ven[i].replaceAll(", ", "\n");
+                        }
                     }
+                    embed = listEmbed("Keyboards", names, ven, price);
+                    message.reply({ embeds: [embed] });
                 } else {
                     str = ":exclamation: **No keyboards found in the database.** :exclamation:" +
                         "\n\nCheck main webpage here: https://www.mechgroupbuys.com/keyboards";
+                    message.reply(str);
                 }
-                /** message.author.send(str); **/
-                message.reply(str);
             })
             .catch(err => {
                 message.reply(":warning: **There was an error connecting to the API.** :warning:\n\n" +
