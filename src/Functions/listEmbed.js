@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 //name, ven, price
-const listEmbed = (type, names, ven, price) => {
+const listEmbed = (type, names, ven, price, status) => {
     let description = "\u200b";
     let len = names.length - 1;
 
@@ -20,12 +20,12 @@ const listEmbed = (type, names, ven, price) => {
             count++;
         }
     }
-    if (count > 3999) {
+    if (count > 3999) {//if vendor list is 3999 or greater chars, shorten list to just the main vendors
         gt = true;
         description = "__***Note: Due to character limits, only the main vendor is listed.***__" + description;
     }
     for (let z = 0; z < ven.length; z++) {
-        if (gt) { //if vendor list is 3999 or greater chars, shorten list to just the main vendors
+        if (gt) {
             if (ven[z].includes(",")) {
                 ven[z] = ven[z].substring(0, ven[z].indexOf(","));
             }
@@ -38,7 +38,7 @@ const listEmbed = (type, names, ven, price) => {
 
     let embedRes = new Discord.MessageEmbed()
         .setColor('BLURPLE')
-        .setTitle("MechGroupBuys: Live " + type)
+        .setTitle(`MechGroupBuys: ${status} ` + type)
         .setURL(`https://www.mechgroupbuys.com/${type.toLowerCase()}`)
         .setDescription(description) //whitespace between title and fields
         .setThumbnail('http://www.mechgroupbuys.com/ab775f61ebe39404b73cd8b998a21624.png')
@@ -48,7 +48,7 @@ const listEmbed = (type, names, ven, price) => {
     for (let j = 0; j <= len; j++) {
         embedRes.addFields({
             name: "\u200b",
-            value: `**[${names[j]}](${nameURL[j]})\n$${price[j].substring(6, price[j].length)} USD**\n${ven[j]}`,
+            value: `**[${names[j]}](${nameURL[j]})**\n${price[j]}\n${ven[j]}`,
             inline: true,
         })
     }
