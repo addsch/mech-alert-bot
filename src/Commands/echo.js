@@ -12,8 +12,7 @@ module.exports = new Command({
         str.shift();
         if (args.length > 0) {
             //if $echo is called with inputs, return parsed input
-            str = args;
-            str.join(" ");
+            str = str.join(" ");
         } else {
             str = "*You notice a small gust of wind.*";
         }

@@ -30,7 +30,7 @@ module.exports = new Command({
         };
 
         if (args.length < 0 || !check) {
-            message.reply("Invalid: must be `$caps {status}`\nStatus must be one of the following: `live`, or `upcoming` (IC list is too long to embed)");
+            message.reply("Invalid: must be `$caps {status}`\nStatus must be one of the following: `live`, `upcoming`, or `ic`.");
         } else {
             axios.get(`http://mechgroupbuyswrapper.herokuapp.com/keycaps?status=${status[0]}`)
                 .then(res => {
