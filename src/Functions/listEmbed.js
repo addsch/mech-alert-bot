@@ -10,7 +10,7 @@ const listEmbed = (type, names, ven, price, status) => {
     for (let i = 0; i <= len; i++) {
         let temp = names[i]; //get name of keyboard for hyperlink
         temp = encodeURIComponent(temp.trim()); //trim whitespace and URL encode
-        nameURL.push(`https://www.mechgroupbuys.com/${type.toLowerCase()}/${temp}`);
+        nameURL.push(`http://www.mechgroupbuys.com/${type.toLowerCase()}/${temp}`);
     }
 
     let gt = false;
@@ -39,7 +39,7 @@ const listEmbed = (type, names, ven, price, status) => {
     let embedRes = new Discord.MessageEmbed()
         .setColor('BLURPLE')
         .setTitle(`MechGroupBuys: ${status} ` + type)
-        .setURL(`https://www.mechgroupbuys.com/${type.toLowerCase()}`)
+        .setURL(`http://www.mechgroupbuys.com/${type.toLowerCase()}`)
         .setDescription(description) //whitespace between title and fields
         .setThumbnail('http://www.mechgroupbuys.com/ab775f61ebe39404b73cd8b998a21624.png')
         .setTimestamp();

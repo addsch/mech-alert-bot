@@ -52,16 +52,16 @@ module.exports = new Command({
                         if (embed.length < 6000) {
                             message.reply({ embeds: [embed] })
                         } else {
-                            message.reply(":warning: List is too long to embed, please check the main webpage: :warning:\nhttps://www.mechgroupbuys.com/switches")
+                            message.reply(":warning: List is too long to embed, please check the main webpage: :warning:\nhttp://www.mechgroupbuys.com/switches")
                         }
                     } else {
                         message.reply(":exclamation: **No switches found in the database.** :exclamation:" +
-                            "\n\nCheck main webpage here: https://www.mechgroupbuys.com/switches");
+                            "\n\nCheck main webpage here: http://www.mechgroupbuys.com/switches");
                     }
                 })
                 .catch(err => {
                     message.reply(":warning: **There was an error connecting to the API.** :warning:\n\n" +
-                        "Check main webpage here: https://www.mechgroupbuys.com/switches");
+                        "Check main webpage here: http://www.mechgroupbuys.com/switches");
                     console.error("$keebs cmd ERROR"); //print error to console
                 });
         }

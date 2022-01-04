@@ -58,16 +58,16 @@ module.exports = new Command({
                         if (embed.length < 6000) {
                             message.reply({ embeds: [embed] })
                         } else {
-                            message.reply(":warning: List is too long to embed, please check the main webpage: :warning:\nhttps://www.mechgroupbuys.com/keycaps")
+                            message.reply(":warning: List is too long to embed, please check the main webpage: :warning:\nhttp://www.mechgroupbuys.com/keycaps")
                         }
                     } else {
                         message.reply(":exclamation: **No keycaps found in the database.** :exclamation:" +
-                            "\n\nCheck main webpage here: https://www.mechgroupbuys.com/keycaps");
+                            "\n\nCheck main webpage here: http://www.mechgroupbuys.com/keycaps");
                     }
                 })
                 .catch(err => {
                     message.reply(":warning: **There was an error connecting to the API.** :warning:\n\n" +
-                        "Check main webpage here: https://www.mechgroupbuys.com/keycaps");
+                        "Check main webpage here: http://www.mechgroupbuys.com/keycaps");
                     console.error("$caps cmd ERROR"); //print error to console
                 });
         }

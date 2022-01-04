@@ -10,7 +10,7 @@ module.exports = new Command({
     async run(message, args, client) {
 
         let str = args;
-        const test = './databaseUsers.sqlite3';
+        const test = './database.sqlite3';
         let db = new Database(test, Database.OPEN_READWRITE, (err) => {
             if (err) {
                 console.error(err.message);

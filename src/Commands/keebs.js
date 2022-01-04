@@ -52,16 +52,16 @@ module.exports = new Command({
                         if (embed.length < 6000) { //max length of embed = 6000, if the length is more than that, send error message instead of embedding to prevent termination
                             message.reply({ embeds: [embed] })
                         } else {
-                            message.reply(":warning: List is too long to embed, please check the main webpage: :warning:\nhttps://www.mechgroupbuys.com/keyboards")
+                            message.reply(":warning: List is too long to embed, please check the main webpage: :warning:\nhttp://www.mechgroupbuys.com/keyboards")
                         }
                     } else {
                         message.reply(":exclamation: **No keyboards found in the database.** :exclamation:" +
-                            "\n\nCheck main webpage here: https://www.mechgroupbuys.com/keyboards");
+                            "\n\nCheck main webpage here: http://www.mechgroupbuys.com/keyboards");
                     }
                 })
                 .catch(err => {
                     message.reply(":warning: **There was an error connecting to the API.** :warning:\n\n" +
-                        "Check main webpage here: https://www.mechgroupbuys.com/keyboards");
+                        "Check main webpage here: http://www.mechgroupbuys.com/keyboards");
                     console.error("$keebs cmd ERROR"); //print error to console
                 });
         }
