@@ -6,7 +6,7 @@ const listEmbed = require("../Functions/listEmbed.js");
 
 module.exports = new Command({
     name: "switches",
-    description: "Lists all switches based on {status}.",
+    description: "Lists all switches in database based on {status}.",
 
     async run(message, args, client) {
         let status = args;
@@ -55,14 +55,12 @@ module.exports = new Command({
                             message.reply(":warning: List is too long to embed, please check the main webpage: :warning:\nhttp://www.mechgroupbuys.com/switches")
                         }
                     } else {
-                        message.reply(":exclamation: **No switches found in the database.** :exclamation:" +
-                            "\n\nCheck main webpage here: http://www.mechgroupbuys.com/switches");
+                        message.reply(`:warning: **No switches found in the database.** :warning:\n\nCheck main webpage here: http://www.mechgroupbuys.com/switches`);
                     }
                 })
                 .catch(err => {
-                    message.reply(":warning: **There was an error connecting to the API.** :warning:\n\n" +
-                        "Check main webpage here: http://www.mechgroupbuys.com/switches");
-                    console.error("$keebs cmd ERROR"); //print error to console
+                    message.reply(`:warning: **There was an error connecting to the API.** :warning:\n\nCheck main webpage here: http://www.mechgroupbuys.com/switches`);
+                    console.error("$switches cmd ERROR"); //print error to console
                 });
         }
     }

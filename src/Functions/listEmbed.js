@@ -16,9 +16,7 @@ const listEmbed = (type, names, ven, price, status) => {
     let gt = false;
     let count = 0;
     for (let x = 0; x < ven.length; x++) {
-        for (let y = 0; y < ven[x].length; y++) {
-            count++;
-        }
+        count += ven[x].length;
     }
     if (count > 3999) {//if vendor list is 3999 or greater chars, shorten list to just the main vendors
         gt = true;
