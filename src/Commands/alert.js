@@ -4,7 +4,6 @@ const Database = require("better-sqlite3");
 const Discord = require("discord.js");
 const { default: axios } = require("axios");
 
-
 const invalid = "Invalid paramaters. Correct usage: `$alert {type} {name}`.\nValid types: `keyboard`, `keycaps`, `switch`";
 const createTable = "CREATE TABLE IF NOT EXISTS alert('userID' TEXT, 'type' TEXT, 'name' TEXT, 'date' TEXT, 'pic' TEXT)";
 //date not stored as SQL DATE because of how dates are stored in API JSON and how getting dates work in JS
@@ -56,7 +55,7 @@ module.exports = new Command({
         })
         db.exec(createTable);
 
-        axios.get(`http://mechgroupbuyswrapper.herokuapp.com/${type}?status=upcoming`)
+        axios.get(`https://mechgroupbuyswrapper.herokuapp.com/${type}?status=upcoming`)
             .then(res => {
 
                 //find product in JSON
