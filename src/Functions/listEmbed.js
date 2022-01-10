@@ -35,11 +35,11 @@ const listEmbed = (type, names, ven, price, status) => {
     }
 
     let embedRes = new Discord.MessageEmbed()
-        .setColor('BLURPLE')
+        .setColor("BLURPLE")
         .setTitle(`MechGroupBuys: ${status} ` + type)
         .setURL(`https://www.mechgroupbuys.com/${type.toLowerCase()}`)
         .setDescription(description) //whitespace between title and fields
-        .setThumbnail('https://www.mechgroupbuys.com/ab775f61ebe39404b73cd8b998a21624.png')
+        .setThumbnail("https://www.mechgroupbuys.com/ab775f61ebe39404b73cd8b998a21624.png")
         .setTimestamp();
 
     //dynamically add keyboard names, prices, and vendor list

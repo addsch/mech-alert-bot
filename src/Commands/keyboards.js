@@ -6,7 +6,7 @@ const list = require("../Functions/list.js");
 
 module.exports = new Command({
     name: "keyboards",
-    description: "Lists all keyboards in database based on {status}.",
+    description: "Lists all keyboards in database based on **{status}**.",
 
     async run(message, args, client) {
         list(message, args);

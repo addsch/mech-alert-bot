@@ -10,7 +10,7 @@ const createTable = "CREATE TABLE IF NOT EXISTS alert('userID' TEXT, 'type' TEXT
 
 module.exports = new Command({
     name: "alert",
-    description: "Sets or removes an alert for the specificed keyboard product. Must be of status `upcoming`.",
+    description: "Sets or removes an alert for the specificed keyboard product. Must be of status **{upcoming}**.",
 
     async run(message, args, client) {
         let str = args; //get parameters and shift to remove command from user input

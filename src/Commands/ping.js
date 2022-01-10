@@ -4,7 +4,7 @@ const Command = require("../Structures/Command.js");
 
 module.exports = new Command({
     name: "ping",
-    description: "Gives latency of bot.",
+    description: "Pong!",
 
     async run(message, args, client) {
 
